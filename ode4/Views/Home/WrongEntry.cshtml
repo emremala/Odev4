@@ -1,0 +1,34 @@
+﻿
+<div class="panel panel-default">
+    <div class="panel-heading">Hatalı Girişler</div>
+    <div class="panel-body">
+
+        @if (Convert.ToBoolean(Session["loginRoles"]) == true)
+        {
+            if (Session["wrongpiece"].ToString() == "0")
+            {
+                <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Hata:</span>
+                Hatalı Giriş Olmamıştır.
+            </div>
+            }
+            else
+            {
+                <div class="alert alert-danger text-center" style="margin-top:2em">Hatalı Giriş Sayısı : @ViewBag.wrongpiece</div>
+                <div class="alert alert-danger text-center" style="margin-top:2em">Son Hatalı Giriş Zamanı : @ViewBag.wrongdate</div>
+                <div class="alert alert-danger text-center" style="margin-top:2em">Son Hatalı Giriş IP : @ViewBag.IP</div>
+            }
+        }
+        else
+        {
+            Session["loginRoles"] = false;
+            <div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Hata:</span>
+                Bu Sayfa İçin Yetkiniz Yok
+            </div>
+        }
+    </div>
+</div>
+
